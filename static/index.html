@@ -31,6 +31,7 @@
         <div class="modal-body">
             <div>Name task<br><input id="name" type="text" size="40"></div>
             <div>Description<br><input id="description"type="text" size="40"></div>
+            <div>Time<br><input id="time" type="time" name="cron" value="03:15" min="00:01" max="06:00"></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -43,11 +44,12 @@
 function add(){
     var name = document.getElementById("name");
     var description = document.getElementById("description");
-    if (name.valu=="" || description.value=="") {alert("Not text in input");return 301}
+    if (name.value=="" || description.value=="") {alert("Not text in input");return 301}
     document.getElementById("close").setAttribute("data-dismiss","modal");
     var task = {};
     task.name =name.value;
     task.description =  description.value;
+    task.time = document.getElementById("time").value;
     name.value="";
     description.value="";
     console.log(task);

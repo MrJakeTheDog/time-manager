@@ -29,16 +29,30 @@
           </button>
         </div>
         <div class="modal-body">
-            <div>Name task<br><input type="text" size="40"></div>
-            <div>Description<br><input type="text" size="40"></div>
+            <div>Name task<br><input id="name" type="text" size="40"></div>
+            <div>Description<br><input id="description"type="text" size="40"></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button id= "close" type="button" class="btn btn-primary"  onclick="add()">Add</button>
         </div>
       </div>
     </div>
   </div>
+  <script>
+function add(){
+    var name = document.getElementById("name");
+    var description = document.getElementById("description");
+    if (name.valu=="" || description.value=="") {alert("Not text in input");return 301}
+    document.getElementById("close").setAttribute("data-dismiss","modal");
+    var task = {};
+    task.name =name.value;
+    task.description =  description.value;
+    name.value="";
+    description.value="";
+    console.log(task);
+}
+  </script>
     <div class="Time">
         <p class="Time">TIME</p>
     </div>
@@ -62,7 +76,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-
+        
 </body>
 
 </html>

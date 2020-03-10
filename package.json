@@ -1,0 +1,17 @@
+{
+  "name": "time-manager",
+  "version": "1.0.0",
+  "description": "Project for Hackaton",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "a1"
+  ],
+  "author": "team \"SHIfT CODERS\"",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

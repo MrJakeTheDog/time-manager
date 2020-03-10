@@ -13,7 +13,7 @@ http = require('http').Server(app);
 //     res.end("Hi nigga"+ ++counter);
 // })
 http.listen(process.env.PORT || 3000, function() {
-    console.log('Listening on:' + (process.env.PORT || 3000));
+    console.log('Listening on :' + (process.env.PORT || 3000));
 });
 
 app.use(express.static(__dirname + '/static/'));

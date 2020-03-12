@@ -55,12 +55,13 @@ function add(){
     name.value="";
     description.value="";
     console.log(task);
-    startTimer();
 }
-var time
+var time;
 function startTimer() {
+    if (task.time != "" && task.time!=undefined) {
     if  (task.timer ==0) {time=task.time; task.timer=1;}
-    else time= document.getElementById("Time").innerHTML;
+    else if (document.getElementById("Time").innerText!= null) time= document.getElementById("Time").innerText;
+    else {}
     var arr = time.split(":");
     var h = arr[0];
     var m = arr[1];
@@ -79,12 +80,15 @@ function startTimer() {
     }
     else s--;
     console.log(s);
+    console.log(task.time);
     if (s < 10) s = "0" + s;
     document.getElementById("Time").innerHTML = h+":"+m+":"+s;
     setTimeout(startTimer, 1000);
   }
+  else setTimeout(startTimer, 1000);
+}
   </script>
-    <div id="Time" class="Time">
+    <div id="Time" class="Time" onload="startTimer()">
         <p class="Time">TIME</p>
     </div>
     
@@ -97,7 +101,7 @@ function startTimer() {
     <table id="Task">
 
     </table>
-    
+    <script>startTimer();</script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

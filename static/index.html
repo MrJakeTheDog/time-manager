@@ -31,7 +31,7 @@
         <div class="modal-body">
             <div>Name task<br><input id="name" type="text" size="40"></div>
             <div>Description<br><input id="description"type="text" size="40"></div>
-            <div>Time<br><input id="time" type="time" name="cron" value="03:15" min="00:01" max="06:00"></div>
+            <div>Time<br><input id="time" type="time" name="cron" value="03:15"></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -41,21 +41,50 @@
     </div>
   </div>
   <script>
+var task = {};
 function add(){
     var name = document.getElementById("name");
     var description = document.getElementById("description");
     if (name.value=="" || description.value=="") {alert("Not text in input");return 301}
     document.getElementById("close").setAttribute("data-dismiss","modal");
-    var task = {};
+    
     task.name =name.value;
     task.description =  description.value;
-    task.time = document.getElementById("time").value;
+    task.timer=0;
+    task.time = document.getElementById("time").value+":00";
     name.value="";
     description.value="";
     console.log(task);
+    startTimer();
 }
+var time
+function startTimer() {
+    if  (task.timer ==0) {time=task.time; task.timer=1;}
+    else time= document.getElementById("Time").innerHTML;
+    var arr = time.split(":");
+    var h = arr[0];
+    var m = arr[1];
+    var s = arr[2];
+    if (s == 0) {
+      if (m == 0) {
+          alert("End time");
+          window.location.reload();
+          return;   
+        m = 60;
+        if (h < 10) h = "0" + h;
+      }
+      m--;
+      if (m < 10) m = "0" + m;
+      s = 59;
+    }
+    else s--;
+    console.log(s);
+    if (s < 10) s = "0" + s;
+    document.getElementById("Time").innerHTML = h+":"+m+":"+s;
+    setTimeout(startTimer, 1000);
+  }
   </script>
-    <div class="Time">
+    <div id="Time" class="Time">
         <p class="Time">TIME</p>
     </div>
     
